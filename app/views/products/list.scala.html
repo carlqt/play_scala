@@ -1,0 +1,26 @@
+@(products: List[Product])
+
+@main("Play Play") {
+
+  <table class="table">
+    <caption>Product List</caption>
+    <thead>
+      <tr>
+        <th>EAN</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(product <- products) {
+        <tr>
+          <td>@product.ean</td>
+          <td>@product.name</td>
+          <td>@product.description</td>
+          <td><a href="@controllers.routes.Products.show(product.ean)" class="btn btn-info">Edit</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
