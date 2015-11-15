@@ -1,8 +1,6 @@
 package controllers
 
-import play.api._
 import play.api.mvc._
-import play.api._
 import models.Product
 
 class Products extends Controller {
@@ -15,12 +13,9 @@ class Products extends Controller {
 
   def show(ean: Long) = Action { implicit request =>
 
-    val product = Product.findByEan(ean)
+    Product.findByEan(ean).map(prod =>
+      Ok(views.html.products.show(prod))
+    ).getOrElse(NotFound)
 
-    if (product.nonEmpty){
-      Ok(views.html.products.show(product))
-    } else {
-      NotFound
-    }
   }
 }
