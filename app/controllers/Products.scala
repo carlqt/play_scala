@@ -18,4 +18,8 @@ class Products extends Controller {
     ).getOrElse(NotFound)
 
   }
+
+  def newProduct = Action { implicit request =>
+    Ok(views.html.products.newProduct())
+  }
 }

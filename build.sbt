@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   "com.lihaoyi" % "ammonite-repl" % "0.4.8" % "test" cross CrossVersion.full,
-  "org.sorm-framework" % "sorm" % "0.3.19"
+  "org.sorm-framework" % "sorm" % "0.3.19",
+  "net.sf.barcode4j" % "barcode4j" % "2.0"
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
