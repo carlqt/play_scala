@@ -1,4 +1,19 @@
+@(implicit flash: Flash)
+
 @main("Create"){
+
+  @if(flash.get("success").isDefined){
+  <div class="alert alert-success">
+    @flash.get("success")
+  </div>
+  }
+
+  @if(flash.get("error").isDefined){
+  <div class="alert alert-error">
+    @flash.get("error")
+  </div>
+  }
+
   <h1>Add new product</h1>
 
   <form method="post">
