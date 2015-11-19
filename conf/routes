@@ -8,6 +8,7 @@ GET     /test                       controllers.Application.test
 GET     /hello                      controllers.Application.hello(n: String)
 GET     /products                   controllers.Products.list
 GET     /products/new               controllers.Products.newProduct
+POST    /products                   controllers.Products.create
 GET     /products/:ean              controllers.Products.show(ean: Long)
 
 # Map static resources from the /public folder to the /assets URL path

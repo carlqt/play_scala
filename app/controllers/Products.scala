@@ -4,6 +4,8 @@ import play.api.mvc._
 import models.Product
 import play.api.data.Form
 import play.api.data.Forms.{mapping, longNumber, nonEmptyText}
+import play.api.Play.current
+import play.api.i18n.Messages.Implicits._
 
 class Products extends Controller {
   private val productForm: Form[Product] = Form(
@@ -30,6 +32,17 @@ class Products extends Controller {
   }
 
   def newProduct = Action { implicit request =>
-    Ok(views.html.products.newProduct(request.flash))
+    val form = if (request.flash.get("error").isDefined)
+      productForm.bind(request.flash.data)
+    else
+      productForm
+
+
+    Ok(views.html.products.newProduct(form))
+  }
+
+  def create = Action { implicit request =>
+    Redirect(routes.Products.list)
+
   }
 }
