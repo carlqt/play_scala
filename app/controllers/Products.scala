@@ -17,18 +17,14 @@ class Products extends Controller {
   )
 
   def list = Action { implicit request =>
-
     val products = Product.findAll
-
     Ok(views.html.products.list(products))
   }
 
   def show(ean: Long) = Action { implicit request =>
-
     Product.findByEan(ean).map(prod =>
       Ok(views.html.products.show(prod))
     ).getOrElse(NotFound)
-
   }
 
   def newProduct = Action { implicit request =>
@@ -37,12 +33,10 @@ class Products extends Controller {
     else
       productForm
 
-
     Ok(views.html.products.newProduct(form))
   }
 
   def create = Action { implicit request =>
     Redirect(routes.Products.list)
-
   }
 }
